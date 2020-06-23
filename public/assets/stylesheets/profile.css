@@ -100,7 +100,7 @@ nav {
 
 .modal {
 	position: fixed;
-	top: 35%;
+	top: 50%;
 	left: 50%;
 	width: 400px;
 	min-height: 300px;
@@ -701,6 +701,10 @@ footer {
 		font-weight: 100;
 		float: right;
 		margin-right: 2vh;
+	}
+	#photo-button {
+		height: 40px;
+		width: 125px;
 	}
 	/* CSS for Quotes page ends */
 }
