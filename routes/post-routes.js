@@ -5,6 +5,7 @@ const multer = require('multer')
 const path = require('path');
 const transporter = require('../config/mail')
 const keys = require('../config/keys')
+const users = require('../users')
 const storage = multer.diskStorage({
   destination : './public/assets/images/uploads/',
   filename : function(req, file, cb) {
@@ -16,31 +17,10 @@ const upload = multer({
   storage : storage
 }).single('profileImage')
 
-router.post('/profile', (req, res) => {
-    const id = req.body.id;
-    const name = req.body.name;
-    const imageUrl = req.body.imageUrl;
-    const email = req.body.email;
-    const user = new User({
-      name : name,
-      imageUrl : imageUrl,
-      email : email
-    });
-    User.countDocuments({email : email}).then((count) => {
-      if (count<1) {
-        user.save().then(() => {
-        }).catch((error) => {
-          console.log('Error!')
-        });
-      }
-    })
-})
-  
 router.post('/addid/:id', async (req, res) => {
     let _id = req.params.id
-    let bitsid = req.body.user.bitsid
     let quote = req.body.user.quote
-    await User.findByIdAndUpdate(_id, {bitsId : bitsid, quote : quote})
+    await User.findByIdAndUpdate(_id, {quote : quote})
     res.redirect('/profile/' + req.params.id)
   })
   

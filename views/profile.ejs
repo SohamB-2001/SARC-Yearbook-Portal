@@ -36,13 +36,11 @@
         <div class="error-msg"><%=msg%></div>
     <% } %>
     <section class="landing">
-        <% if(!user.bitsId) { %>
+        <% if(!user.quote) { %>
         <div class="mask" role="dialog" id="modal-mask"></div>
         <div class="modal" role="alert" id="modal-main">
             <span class="close" id="close-modal">X</span>
             <form class="modal-form" action="/addid/<%= user.id %>" method="POST">
-                <label for="caption">Enter your BITS ID:</label>
-                <input class="form-styling" type="text" placeholder="2017B4A80844P" name="user[bitsid]">
                 <label for="caption" id="quote-label">Enter your yearbook quote:</label>
                 <input class="form-styling" role="textbox" contenteditable="true" placeholder="Your quote" name="user[quote]"></span>
                 <input type="submit" class="btn">

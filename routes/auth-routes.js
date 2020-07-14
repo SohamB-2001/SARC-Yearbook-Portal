@@ -15,7 +15,7 @@ router.get('/google', passport.authenticate('google', {
     scope : ['profile', 'email']
 }))
 
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.redirect('/profile/' + req.user.id)
+router.get('/google/redirect', passport.authenticate('google', {failureRedirect : '/'}), (req, res) => {
+        res.redirect('/profile/' + req.user.id)
 })
 module.exports = router
