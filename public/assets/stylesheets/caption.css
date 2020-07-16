@@ -88,54 +88,49 @@ nav {
 .landing {
 	height: 100vh;
 	width: 100%;
-	background: #15142a;
+	background-image: url('../images/bg.JPG');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
-
 .card {
-	padding-top: 20px;
-	padding-left: 8vh;
+	padding: 2rem;
+	max-width: 100%;
+	width: 38rem;
+	background-color: rgba(34, 36, 43, 0.859);
+	border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
 	font-family: 'Heebo';
 	font-weight: 300;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	height: 100vh;
-	width: 100%;
-	background: #15142a;
-	background-size: cover;
-	box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+	align-items: center;
+	justify-content: center;
+	height: auto;
+	max-width: 100%;
 	overflow: hidden;
 	transition: all 0.5s ease;
 }
-
-.landing h1 {
-	letter-spacing: 10px;
-	font-family: 'Heebo';
-	font-size: 3rem;
-	color: white;
-	font-weight: 100;
-	padding-top: 8vh;
-	margin-left: 8vh;
+.landing {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
-
-.landing h2 {
-	letter-spacing: 5px;
+.landing h1 {
+	text-align: center;
+	letter-spacing: 10px;
 	font-family: 'Heebo';
 	font-size: 2rem;
 	color: white;
-	font-weight: 300;
-	padding-top: 2vh;
-	margin-left: 8vh;
+	font-weight: 100;
 }
-
-.landing h3 {
+.landing h2 {
+	text-align: center;
 	letter-spacing: 5px;
 	font-family: 'Heebo';
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	color: white;
 	font-weight: 300;
 	padding-top: 2vh;
-	margin-left: 8vh;
 }
 
 .form-styling {
@@ -163,7 +158,7 @@ input:focus::-webkit-input-placeholder {
 label {
 	font-family: 'Heebo';
 	font-weight: 300;
-	font-size: 2rem;
+	font-size: 1.25rem;
 	padding-top: 20px;
 	padding-bottom: 10px;
 	color: rgba(255, 255, 255, 0.9);
@@ -181,33 +176,13 @@ label {
 	border: none;
 	cursor: pointer;
 	font-weight: 300;
-	margin-right: auto;
 	border-radius: 70px;
 	color: #fff;
 	background: linear-gradient(to bottom right, #5e5aec, #3f9efc);
 	box-shadow: 0 13px 26px rgba(#000, 0.16), 0 3px 6px rgba(#000, 0.16);
 }
 /* CSS for the Back to My Profile Button */
-#back a {
-	text-decoration: none;
-	color: white;
-}
 
-#back {
-	font-family: 'Open Sans';
-	font-size: 16px;
-	margin-top: 12.5%;
-	width: 170px;
-	height: 50px;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	font-weight: 300;
-	border-radius: 70px;
-	color: #fff;
-	background: linear-gradient(to bottom right, #6452e9, #639ff9);
-	box-shadow: 0 13px 26px rgba(#000, 0.16), 0 3px 6px rgba(#000, 0.16);
-}
 footer {
 	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -342,6 +317,7 @@ footer {
 		height: auto;
 		min-height: 100vh;
 	}
+
 	nav {
 		position: relative;
 	}
@@ -511,15 +487,10 @@ footer {
 
 	/* Code for main body content */
 	.card {
-		padding-left: 0;
-		padding-top: 10px;
+		width: 90%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		height: 92vh;
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.btn {
@@ -540,15 +511,6 @@ footer {
 	.landing h2 {
 		letter-spacing: 2px;
 		font-size: 1.5rem;
-		padding-left: 0;
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
-	}
-
-	.landing h2 {
-		letter-spacing: 2px;
-		font-size: 1rem;
 		padding-left: 0;
 		margin-left: auto;
 		margin-right: auto;

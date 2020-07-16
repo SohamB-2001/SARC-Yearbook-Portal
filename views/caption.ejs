@@ -53,9 +53,9 @@
             <div class="success-msg"><%= success %></div>
         <% } %>
     <section class="landing">
-        <h1><%= name %> has nominated you!</h1>
-        <h2>Write a Caption for your Friend!</h2>
         <form class="card" action="/<%= id %>/<%= id2 %>/caption" method="POST">
+            <h1><%= name %> has nominated you!</h1>
+            <h2>Write a Caption for your Friend!</h2>
             <label for="caption">Caption:</label>
             <% if (typeof oldcaption!=="undefined") { %>
             <input class="form-styling" type="text" value="<%= oldcaption %>" name="user[caption]">
