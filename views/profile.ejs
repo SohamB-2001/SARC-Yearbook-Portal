@@ -42,7 +42,7 @@
             <span class="close" id="close-modal">X</span>
             <form class="modal-form" action="/addid/<%= user.id %>" method="POST">
                 <label for="caption" id="quote-label">Enter your yearbook quote:</label>
-                <input class="form-styling" role="textbox" contenteditable="true" placeholder="Your quote" name="user[quote]"></span>
+                <input class="form-styling" role="textbox" contenteditable="true" placeholder="Your quote" name="user[quote]" maxlength="160"></span>
                 <input type="submit" class="btn">
             </form>
         </div>

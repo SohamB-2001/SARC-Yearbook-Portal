@@ -38,6 +38,9 @@ router.post('/nominate/:id', async (req, res) => {
       if (user2.nominatedby.some(e => e.id === nominatorid)) {
         return res.render('nominate', {id : id, success : 'User has already been nominated!'})
       }
+      if (user2.captions.length>5) {
+        return res.render('nominate', {id : id, error : 'User already has 5 captions on his profile!'})
+      }
       else {
         const email = user2.email
         await user2.updateOne({
