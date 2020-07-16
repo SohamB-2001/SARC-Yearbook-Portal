@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;300&family=Open+Sans:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;300&family=Open+Sans:wght@300&display=swap');
 
 /* General boilerplate code for resetting borders and margins */
 body,
@@ -13,10 +13,10 @@ html {
 .section-top {
 	overflow: hidden;
 	background-size: cover;
-	background-image: url("../images/image1.JPG");
+	background-image: url('../images/bg.JPG');
 	background-repeat: no-repeat;
 	height: 100vh;
-	animation: slide 20s infinite;
+	/* animation: slide 20s infinite; */
 }
 
 .card {
@@ -37,7 +37,7 @@ html {
 .card h1 {
 	padding-top: 10px;
 	font-size: 2rem;
-	font-family: "Heebo";
+	font-family: 'Heebo';
 	font-weight: 300;
 	letter-spacing: 10px;
 }
@@ -57,7 +57,7 @@ a {
 	text-decoration: none;
 }
 a:visited {
-    color : white;
+	color: white;
 }
 .google-icon-wrapper {
 	width: 42px;
@@ -78,7 +78,7 @@ a:visited {
 	color: white;
 	font-size: 14px;
 	letter-spacing: 0.2px;
-	font-family: "Open Sans";
+	font-family: 'Open Sans';
 }
 
 /* CSS for the Developer note */
@@ -86,33 +86,11 @@ a:visited {
 	font-size: 1.25rem;
 	display: inline;
 	font-weight: 100;
-	font-family: "Heebo";
+	font-family: 'Heebo';
 }
 
 #heart {
 	height: 20px;
-}
-
-/* CSS for Slideshow Animation */
-@keyframes slide {
-	0% {
-		background-image: url("../images/image1.JPG");
-	}
-	20% {
-		background-image: url("../images/image2.JPG");
-	}
-	40% {
-		background-image: url("../images/image3.jpg");
-	}
-	60% {
-		background-image: url("../images/image4.jpg");
-	}
-	80% {
-		background-image: url("../images/image5.jpg");
-	}
-	100% {
-		background-image: url("../images/image6.jpg");
-	}
 }
 
 /* CSS for Responsive Website */
