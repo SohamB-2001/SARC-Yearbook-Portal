@@ -192,7 +192,6 @@ footer {
 	height: 25vh;
 	background-color: rgba(34, 36, 43, 0.859);
 	box-shadow: 0rem 3rem 3.125rem 0rem rgba(44, 42, 54, 0.451);
-	border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
 	flex-direction: column;
 	display: flex;
 	justify-content: space-evenly;

@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="/assets/stylesheets/profile.css">
+    <link rel="stylesheet" href="assets/stylesheets/profile.css">
 </head>
 
 <body>
@@ -21,22 +21,21 @@
         <symbol id="icon-90b" viewBox="0 0 40 40">
             <path d="M12.1,13.8v19.1H5.7V13.8C5.7,13.8,12.1,13.8,12.1,13.8z M12.5,7.9c0,0.9-0.3,1.7-1,2.4c-0.7,0.6-1.5,0.9-2.6,0.9h0 c-1.1,0-1.9-0.3-2.5-0.9c-0.6-0.6-1-1.4-1-2.4c0-1,0.3-1.7,1-2.4S7.9,4.6,9,4.6s1.9,0.3,2.6,0.9S12.5,6.9,12.5,7.9z M35,22v11h-6.4 V22.7c0-1.4-0.3-2.4-0.8-3.2c-0.5-0.8-1.3-1.1-2.4-1.1c-0.8,0-1.5,0.2-2,0.7c-0.5,0.4-1,1-1.2,1.7c-0.1,0.4-0.2,0.9-0.2,1.6v10.7 h-6.4c0-5.1,0-9.3,0-12.5s0-5.1,0-5.7l0-0.9H22v2.8h0c0.3-0.4,0.5-0.8,0.8-1.1c0.3-0.3,0.6-0.6,1.1-1c0.5-0.4,1-0.6,1.7-0.8 c0.7-0.2,1.4-0.3,2.2-0.3c2.2,0,4,0.7,5.3,2.2C34.4,17,35,19.1,35,22L35,22z"/>
         </symbol>
+        
     </svg>
 
     <nav class="navbar">
 
     <div class="search-bar">
-        <form action="/<%= user._id %>/search" method="POST">
-        <input type="text" name="user[bitsid]" id="search" placeholder="Search by BITS ID">
-        </form>
+        <input type="text" name="search-box" id="search" placeholder="Search">
     </div>
 
-    <div class="links" id="nav-links">
+    <div class="links">
         <ul class="nav-links">
-            <li><a href="/profile/<%= user._id %>/edit">Edit Profile</a></li>
-            <li><a href="/<%= user._id %>/nominate">Nominate a Friend</a></li>
-            <li><a href="/<%= user._id %>/notifications">Notifications</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
+            <li><a href="edit.html">Edit Profile</a></li>
+            <li><a href="nominate.html">Nominate a Friend</a></li>
+            <li><a href="notifications.html">Notifications</a></li>
+            <li><a href="#">Logout</a></li>
         </ul>
     </div>
 
@@ -46,51 +45,57 @@
         <span class="bottom"></span>
     </div>
 
+    <div class="overlay" id="overlay">
+        <div class="overlay-menu">
+            <ul>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Nominate a Friend</a></li>
+                <li><a href="#">Notifications</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
     </nav>
-    <% if(typeof msg!=='undefined') { %>
-        <div class="error-msg"><%=msg%></div>
-    <% } %>
+
     <section class="landing">
-        <% if(!user.quote) { %>
+
         <div class="mask" role="dialog" id="modal-mask"></div>
         <div class="modal" role="alert" id="modal-main">
             <span class="close" id="close-modal">X</span>
-            <form class="modal-form" action="/addid/<%= user.id %>" method="POST">
-                <label for="caption" id="quote-label">Enter your yearbook quote:</label>
-                <input class="form-styling" role="textbox" contenteditable="true" placeholder="Your quote" name="user[quote]"></span>
-                <input type="submit" class="btn">
+            <form class="modal-form">
+                <label for="caption">Enter your BITS ID:</label>
+                <input class="form-styling" type="text" placeholder="2017B4A80844P">
+                <button type="button" class="btn">Submit</button>
             </form>
         </div>
-        <% } %>
 
         <div class="card" id="main-photo">
-            <div class="profile-photo">
-                <div class="photo" style="background-image: url(<%= user.imageUrl %>)"></div>
-                <a href="/<%= user.id %>/upload"><button id="photo-upload">Upload Picture</button></a>        
+            <div class="profile-photo" >
+                <div class="photo" style="background-image: url(assets/images/profile.jpg)"></div>
             </div>
             <div class="profile">
-                <p class="name"><b>Name: </b><%= user.name %></p>
-                <p class="id"><b>Email: </b><%= user.email %></p>
-                <% if(user.bitsId) { %> 
-                    <p class="id"><b>BITS ID:</b> <%= user.bitsId %></p>
-                <% } %>
-                <% if(user.discipline) { %>
-                <p class="dept"><b>Discipline: </b><%= user.discipline %> </p>
-                <% } %>
-                <% if(user.quote) { %>
-                <p class="caption"><b>Yearbook Quote: </b><%= user.quote %></p>
-                <% } %>
+                <p class="name"><b>Name: </b>Yash Thakker</p>
+                <p class="id"><b>ID: </b>2019B1A31026P</p>
+                <p class="dept"><b>Discipline:</b> Biological Sciences</p>
+                <p class="caption"><b>Yearbook Quote: </b>Resistance to change is self sabotage</p>
             </div>
         </div>
     </section>
     <section class="quotes-page">
         <h1>What others are saying!</h1>
-        <% let captions = user.captions %>
-        <% for(let i=0; i<captions.length; i++) { %>
-        <div class="speech-bubble">
-            <h2>"<%= captions[i].caption %>"</h2><h3>-<%= captions[i].name %></h3>
-        </div>
-        <% } %>
+            <div class="speech-bubble">
+                <h2>"One of the most talented people on the campus."</h2>
+                <h3>-Priyanshu Shukla</h3>
+            </div>
+            <div class="speech-bubble">
+                <h2>"One of the Funniest guys I have ever met. Cracks me up."</h2>
+                <h3>-Soham Bhowmick</h3>
+            </div>
+            <div class="speech-bubble">
+                <h2>"My best friend and has always helped me to study during Compres."</h2>
+                <h3>-Puney Chawla</h3>
+            </div>
     </section>
 
     <footer>
@@ -126,7 +131,7 @@
         <a href="developers.html"><button id="devs">Developers</button></a>
     </footer>
 
-    <script src="/assets/scipts/app.js"></script>
-    <script src="/assets/scipts/new.js"></script>
+    <script src="assets/scipts/app.js"></script>
+    <script src="assets/scipts/new.js"></script>
 </body>
 </html>
