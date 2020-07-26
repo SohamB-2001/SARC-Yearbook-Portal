@@ -56,14 +56,14 @@ router.post('/nominate/:id', async (req, res) => {
           from : keys.email.user,
           to : email,
           subject : 'Online Yearbook',
-          text : "You've been nominated to write a caption! Login at <> to know more."
+          text : "You've been nominated to write a caption! Login at yearbook.bits-sarc.org to know more."
         }
         transporter.sendMail(mailOptions, (err, data) => {
           if(err) {
             console.log(err)
           }
           else {
-            res.render('nominate', {id : id, success : 'User nominated successfully!'})
+            res.render('nominate', {id : id, success : 'Friend nominated successfully!'})
           }
       })
     }}
