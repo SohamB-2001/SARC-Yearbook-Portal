@@ -6,16 +6,30 @@ const path = require('path');
 const transporter = require('../config/mail')
 const keys = require('../config/keys')
 const users = require('../users')
-const storage = multer.diskStorage({
-  destination : './public/assets/images/uploads/',
-  filename : function(req, file, cb) {
-    cb(null, file.fieldname+'-'+Date.now()+path.extname(file.originalname))
+var fs = require('fs');  
+const sharp = require('sharp')
+
+const upload = multer({                 // No dest parameter provided because we
+  limits: {                           // do not want to save the image in the 
+      fileSize: 1000000               // filesystem. We wanna access the binary
+  },                                  // data in the router function.
+  fileFilter(req, file, cb) {
+      if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+          return cb(new Error('Please provide a jpg, jpeg or png file'));
+      }
+      cb(undefined, true);
   }
 })
 
-const upload = multer({
-  storage : storage
-}).single('profileImage')
+router.post('/:id/upload', upload.single('image'), async (req, res) => {
+  const buffer = await sharp(req.file.buffer).resize({width: 250, height : 250}).png().toBuffer()
+  const user = await User.findById(req.params.id)
+  user.img = buffer
+  await user.save()
+  res.render('profile', {user:user})
+}, (error, req, res, next) => {
+  res.status(400).send({ error: error.message });
+})
 
 router.post('/addid/:id', async (req, res) => {
     let _id = req.params.id
@@ -124,24 +138,6 @@ router.post('/:id1/:id2/caption', async (req, res) => {
       }
     }})
 
-router.post('/:id/upload', (req, res) => {
-  let id = req.params.id
-  upload(req, res, (err) => {
-    if (err) {
-      // Display Error
-    }
-    else {
-      if (typeof req.file==='undefined') {
-        res.render('upload', {id:id, msg : 'Please upload a valid image!'})
-      }
-      else {
-        User.findByIdAndUpdate(id, {imageUrl : '/assets/images/uploads/' + req.file.filename}).then(() => {
-        res.redirect('/profile/' + id)
-      })
-    }
-      }
-    })
-})
 
 router.post('/:id/search', async (req, res) => {
   let id = req.params.id

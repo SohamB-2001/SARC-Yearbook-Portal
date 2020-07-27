@@ -24,7 +24,11 @@ var UserSchema = new mongoose.Schema({
     },
     captions : {
         type : Array
-    }
+    },
+    img: 
+    { 
+        type : Buffer
+    } 
     })
 var User = mongoose.model('User', UserSchema);
 module.exports = User;

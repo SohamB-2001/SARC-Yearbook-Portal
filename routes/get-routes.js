@@ -63,5 +63,10 @@ router.get('/:id/developers', (req, res) => {
   res.render('developers', {id : req.params.id})
 })
 
+router.get('/upload/:id', async (req, res) => {
+  const user = await User.findById(req.params.id)
+  res.set('Content-Type', 'image/png');
+  res.send(user.img);
+})
 
 module.exports = router

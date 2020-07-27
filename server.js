@@ -27,7 +27,6 @@ app.use(cookieSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 app.use(express.static('public'));
 app.listen(port, () => console.log('Listening at port ' + port));
 app.use(bodyParser.json());
