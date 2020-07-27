@@ -37,11 +37,13 @@
     <section class="landing">
 
         <div class="card" id="main-photo">
+            <div class="profile-photo">
             <% if(user.img) { %>
                 <div class="photo" style="background-image: url(/upload/<%=user.id%>)"></div>
                 <% } else { %>
-                    <div class="photo" style="background-image: url(<%= user.imageUrl %>)"></div>  
-            <% } %>                  
+                <div class="photo" style="background-image: url(<%= user.imageUrl %>)"></div>  
+            <% } %>
+            </div>                  
             <div class="profile">
                 <p class="name"><b>Name: </b><%= user.name %></p>
                 <p class="id"><b>Email: </b><%= user.email %></p>

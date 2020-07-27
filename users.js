@@ -1,4 +1,8 @@
 module.exports = [
+  {
+    "email": "bhowmicksoham2001@gmail.com",
+    "id": "2019A8PS0351P"
+  },
     {
       "email": "f2016240@pilani.bits-pilani.ac.in",
       "id": "2016A1PS0240P"
