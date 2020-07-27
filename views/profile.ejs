@@ -50,7 +50,11 @@
 
         <div class="card" id="main-photo">
             <div class="profile-photo">
+                <% if(user.img) { %>
                 <div class="photo" style="background-image: url(/upload/<%=user.id%>)"></div>
+                <% } else { %>
+                    <div class="photo" style="background-image: url(<%= user.imageUrl %>)"></div>  
+                <% } %>                  
                 <a href="/<%= user.id %>/upload"><button id="photo-upload">Upload Picture</button></a>        
             </div>
             <div class="profile">
